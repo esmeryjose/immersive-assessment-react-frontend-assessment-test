@@ -26,7 +26,7 @@ class Account extends Component {
 
 
   handleChange(event) {
-    //... your code here
+    debugger;
   }
 
   render() {

@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Search = () => {
-  return (
-    <div>
-      <input type="text" value={""} placeholder={"Search your most recent transactions"} />
-    </div>
-  )
+class Search extends Component {
+
+  render() {
+    return (
+      <div>
+        <input type="text" placeholder={"Search your most recent transactions"} onChange={""}/>
+      </div>
+    );
+  }
 }
 
 export default Search

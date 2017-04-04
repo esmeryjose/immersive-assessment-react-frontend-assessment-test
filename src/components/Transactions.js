@@ -14,7 +14,7 @@ class Transactions extends Component {
           <th>Category</th>
           <th>Amount</th>
         </tr>
-        {"...your code here "}
+        {"...your code here"}
       </tbody>
     </table>
     )
