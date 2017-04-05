@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import Transactions from './Transactions'
-import Search from './Search'
+import React, { Component } from 'react';
+import Transactions from './Transactions';
+import Search from './Search';
+// import axios from 'axios';
 
 // The data you retrieve from the Rails API will be structured as follows:
 // [
@@ -24,21 +25,35 @@ import Search from './Search'
 
 class Account extends Component {
 
+  constructor(props){
+    super(props);
+    this.state = {
+      transactions:[],
+      searchTransaction:[],
+      searchTerm: ""
+    }
+  }
 
-  handleChange(event) {
-    debugger;
+  componentWillMount(){
+    var url = "http://localhost:3001/transactions";
+    fetch(url)
+      .then(res=> res.json())
+      .then(transactions=> this.setState({transactions}))
+  }
+
+  handleChange = (event) => {
   }
 
   render() {
 
     return (
       <div>
-        <Search searchTerm={""} handleChange={"...your code here"} />
+        <Search searchTerm={""} allTransactions={this.state.transactions} handleChange={this.handleChange} />
         <p className="App-intro">
           Here are your most recent transactions.
         </p>
 
-        <Transactions transactions={[]} searchTerm={""} />
+        <Transactions transactions={this.state.searchTransaction} searchTerm={""} />
       </div>
     )
   }
