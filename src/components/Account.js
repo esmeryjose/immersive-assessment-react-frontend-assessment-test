@@ -29,8 +29,7 @@ class Account extends Component {
     super(props);
     this.state = {
       transactions:[],
-      searchTransaction:[],
-      searchTerm: ""
+      searchTransaction:[]
     }
   }
 
@@ -41,19 +40,19 @@ class Account extends Component {
       .then(transactions=> this.setState({transactions}))
   }
 
-  handleChange = (event) => {
+  handleChange = (searchTransaction) => {
+    this.setState({searchTransaction})
   }
 
   render() {
-
     return (
       <div>
-        <Search searchTerm={""} allTransactions={this.state.transactions} handleChange={this.handleChange} />
+        <Search allTransactions={this.state.transactions} handleChange={this.handleChange} />
         <p className="App-intro">
           Here are your most recent transactions.
         </p>
 
-        <Transactions transactions={this.state.searchTransaction} searchTerm={""} />
+        <Transactions allTransactions={this.state.transactions} searchTransaction={this.state.searchTransaction} />
       </div>
     )
   }
