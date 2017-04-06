@@ -52,3 +52,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: rgb(250, 250, 255);
 }
+
+.showAllTransactions{
+  margin-top: 1%;
+}

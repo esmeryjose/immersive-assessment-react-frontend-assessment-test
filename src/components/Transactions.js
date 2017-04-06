@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import Transaction from './Transaction'
 
-class Transactions extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      allTransactions: props.allTransactions
-    }
-  }
+class Transactions extends Component {
 
   renderTransaction = (transaction) =>{
     return(
-      <Transaction key={transaction.id} data={transaction}/>
+        <Transaction key={transaction.id} id={transaction.id} data={transaction}/>
     )
   }
 
@@ -26,13 +20,16 @@ class Transactions extends Component {
           <th>Category</th>
           <th>Amount</th>
         </tr>
-        {!!this.props.searchTransaction.length ?
-          this.props.searchTransaction.map(this.renderTransaction) :
-          this.props.allTransactions.map(this.renderTransaction)}
+        {this.props.searchTransaction.map(this.renderTransaction)}
       </tbody>
     </table>
     )
   }
+}
+
+Transactions.propTypes = {
+  allTransactions: React.PropTypes.array.isRequired,
+  searchTransaction: React.PropTypes.array.isRequired
 }
 
 export default Transactions

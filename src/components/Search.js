@@ -12,7 +12,6 @@ class Search extends Component {
 
   updateState = (event)=>{
     var searchTerm = event.target.value
-    console.log("1 "+searchTerm)
     this.setState({searchTerm})
     this.filter(searchTerm)
   }
@@ -34,6 +33,11 @@ class Search extends Component {
       </div>
     );
   }
+}
+
+Search.propTypes = {
+  handleChange: React.PropTypes.func.isRequired,
+  allTransactions: React.PropTypes.array.isRequired
 }
 
 export default Search
