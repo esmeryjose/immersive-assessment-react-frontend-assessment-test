@@ -30,7 +30,7 @@ class Account extends Component {
     return (
       <div>
         <Search allTransactions={this.state.transactions} handleChange={this.handleChange} />
-        <p className="App-intro">
+        <p className="App-intro" >
           Here are your most recent transactions.
         </p>
 
