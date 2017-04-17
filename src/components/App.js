@@ -16,7 +16,6 @@ class App extends Component {
         </div>
 
         <Router history={browserHistory}>
-          <Route exact path="/" component={AllTransactions}/>
           <Route exact path="/transactions" component={Account}/>
           <Route path="/transactions/:id" component={TransactionShow}/>
         </Router>

@@ -13,7 +13,7 @@ class Account extends Component {
   }
 
   componentWillMount(){
-    var url = "http://localhost:3001/transactions";
+    var url = "http://localhost:3001/transactions/most_recent";
     fetch(url)
       .then(res=> res.json())
       .then(transactions=> this.setState({
@@ -26,9 +26,24 @@ class Account extends Component {
     this.setState({searchTransaction})
   }
 
+  showAllTransactions = ()=>{
+    var url = "http://localhost:3001/transactions";
+    fetch(url)
+      .then(res=> res.json())
+      .then(transactions=> this.setState({
+        transactions:transactions,
+        searchTransaction:transactions
+      }))
+  }
+
   render() {
     return (
+
       <div>
+        <button className="showAllTransactions" onClick={this.showAllTransactions}>
+          Show All Transactions
+        </button>
+
         <Search allTransactions={this.state.transactions} handleChange={this.handleChange} />
         <p className="App-intro" >
           Here are your most recent transactions.

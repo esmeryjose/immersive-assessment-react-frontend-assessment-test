@@ -59,10 +59,11 @@ tr:nth-child(odd) {
   height: 5%;
   width: 30%;
   margin-top: 1%;
+  margin-bottom: 1%;
   border-radius: 10px;
   font-size: 14px;
   color: #999;
 }
 a {
   color: inherit;
-} 
+}

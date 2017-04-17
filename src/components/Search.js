@@ -5,7 +5,7 @@ class Search extends Component {
   constructor(props){
     super(props)
     this.state = {
-      searchTerm: "",
+      searchTerm: ""
     }
 
   }
@@ -13,17 +13,21 @@ class Search extends Component {
   updateState = (event)=>{
     var searchTerm = event.target.value
     this.setState({searchTerm})
-    this.filter(searchTerm)
+    this.searchRequest(searchTerm)
   }
 
-  filter = (searchTerm) => {
-    var searchTransaction = [];
-    this.props.allTransactions.forEach((transaction)=>{
-      if (transaction.description.toLowerCase().includes(searchTerm)) {
-        searchTransaction.push(transaction)
-      }
-    })
-    this.props.handleChange(searchTransaction)
+  searchRequest = (searchTerm) => {
+    // var searchTransaction = [];
+    // this.props.allTransactions.forEach((transaction)=>{
+    //   if (transaction.description.toLowerCase().includes(searchTerm)) {
+    //     searchTransaction.push(transaction)
+    //   }
+    // })
+
+    var url = `http://localhost:3001/transactions/search?search=${searchTerm}`;
+    fetch(url)
+      .then(res=> res.json())
+      .then(transactions=> this.props.handleChange(transactions))
   }
 
   render() {
